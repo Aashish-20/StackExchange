@@ -1,5 +1,5 @@
 package com.example.qa.model
 
-data class QuesAndAns(
+data class Answer(
     val answer:String = ""
 )

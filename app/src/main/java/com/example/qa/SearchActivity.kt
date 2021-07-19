@@ -1,6 +1,7 @@
 package com.example.qa
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -10,13 +11,13 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.qa.adapter.AnswersAdapter
-import com.example.qa.model.QuesAndAns
+import com.example.qa.model.Answer
 import kotlinx.android.synthetic.main.activity_search.*
 import java.lang.Exception
 
 class SearchActivity : AppCompatActivity() {
 
-    val answersList = arrayListOf<QuesAndAns>()
+    val answersList = arrayListOf<Answer>()
     lateinit var answersAdapter:AnswersAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +25,20 @@ class SearchActivity : AppCompatActivity() {
         setContentView(R.layout.activity_search)
 
         getAnswers()
+
+        btnSearch.setOnClickListener {
+            if (edtSearchQues.text.isNotEmpty()){
+
+                val intent = Intent(this, QuestionsActivity::class.java)
+                intent.putExtra("question",edtSearchQues.text.toString())
+                startActivity(intent)
+
+                edtSearchQues.text.clear()
+
+            }else{
+                Toast.makeText(this, "please fill the required field!!!", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun getAnswers(){
@@ -48,7 +63,7 @@ class SearchActivity : AppCompatActivity() {
 
                         val answer = itemsObject.getString("body_markdown")
 
-                        val answerDetails = QuesAndAns(answer)
+                        val answerDetails = Answer(answer)
 
                         answersList.add(answerDetails)
 

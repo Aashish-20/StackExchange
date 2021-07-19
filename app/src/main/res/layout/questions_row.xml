@@ -22,7 +22,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             android:fontFamily="@font/dosis"
-            android:textSize="17sp"
+            android:textSize="30sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txtAnswer"/>

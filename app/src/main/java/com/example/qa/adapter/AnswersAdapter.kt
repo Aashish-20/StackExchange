@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.qa.R
-import com.example.qa.model.QuesAndAns
+import com.example.qa.model.Answer
 
-class AnswersAdapter(private val context: Context, private val answerList: ArrayList<QuesAndAns>):
+class AnswersAdapter(private val context: Context, private val answerList: ArrayList<Answer>):
     RecyclerView.Adapter<AnswersAdapter.AnswersViewHolder>() {
 
     class AnswersViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
