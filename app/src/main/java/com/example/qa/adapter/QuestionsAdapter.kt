@@ -2,6 +2,7 @@ package com.example.qa.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.example.qa.AnswerActivity
 import com.example.qa.R
 import com.example.qa.model.Question
 
@@ -32,7 +34,11 @@ class QuestionsAdapter(private val context: Context, private val questionList:Ar
         holder.txtQuestion.text = "Q. ${questions.question}"
 
         holder.clQuesAndAnsRow.setOnClickListener {
-            Toast.makeText(context, questions.questionId, Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, AnswerActivity::class.java)
+            intent.putExtra("question",questions.question)
+            intent.putExtra("question_id",questions.questionId)
+            intent.putExtra("is_answered",questions.is_answered)
+            context.startActivity(intent)
         }
     }
 

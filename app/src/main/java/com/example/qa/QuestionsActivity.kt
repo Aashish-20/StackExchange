@@ -28,7 +28,6 @@ class QuestionsActivity : AppCompatActivity() {
             question = intent.getStringExtra("question").toString()
 
             getQuestions(question)
-
         }
     }
 
@@ -55,7 +54,10 @@ class QuestionsActivity : AppCompatActivity() {
                             //for question id
                             val question_id = objects.getInt("question_id")
 
-                            val questionDetails = Question(title,question_id.toString())
+                            //checkin is answered
+                            val is_answered = objects.getBoolean("is_answered")
+
+                            val questionDetails = Question(title,question_id.toString(),is_answered)
                             questionsList.add(questionDetails)
 
                             questionAdapter = QuestionsAdapter(this,questionsList)
